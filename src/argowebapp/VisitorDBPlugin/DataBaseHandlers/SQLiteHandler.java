@@ -120,7 +120,6 @@ public class SQLiteHandler implements Database {
     private SQLiteJsonResponseBody convertSQLiteToJSON(String searchParam) throws SQLException {
 
         ArrayList<HashMap<String, String>> offlineList;
-        offlineList = new ArrayList<>();
         String selectQuery = "SELECT " + searchParam + " FROM visitors";
 
         Statement database = null;
@@ -143,9 +142,6 @@ public class SQLiteHandler implements Database {
 
         database.close();
 
-        Gson gson = new GsonBuilder().create();
-
-        //Use GSON to serialize Array List to JSON
         return new SQLiteJsonResponseBody(visitors);
     }
 
