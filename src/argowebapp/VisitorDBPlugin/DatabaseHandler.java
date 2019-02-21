@@ -25,8 +25,12 @@ public class DatabaseHandler {
             database.insertVisitor(params.get("name").get(0),params.get("comment").get(0));
         }
         if(params.containsKey("getAll")){
-            return new HttpResponse(database.getAllVisitors(), KnownFileTypes.JSON, StandardResponseHeader.OK_200);
+            byte[] visitors = database.getAllVisitors();
+            database.disconnect();
+            return new HttpResponse(visitors, KnownFileTypes.JSON, StandardResponseHeader.OK_200);
         }
-        return new HttpResponse("HTTP/1.1 303 See Other","Location: ../index.html");
+
+        database.disconnect();
+        return new HttpResponse("HTTP/1.1 301 See Other","Location: ../Visitors.html");
     }
 }
