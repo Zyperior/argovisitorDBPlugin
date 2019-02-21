@@ -19,7 +19,7 @@ public class SQLiteHandler implements Database {
     public void connect() {
         try {
             // db parameters
-            String url = "jdbc:sqlite:databases/SQLite/visitorsDB.db";
+            String url = "jdbc:sqlite:files/databases/SQLite/visitorsDB.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             createNewTable();
