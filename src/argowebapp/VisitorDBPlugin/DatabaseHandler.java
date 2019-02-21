@@ -12,14 +12,14 @@ import java.util.Map;
 
 public class DatabaseHandler {
 
-    Database database;
+    private Database database;
 
     @Inject
     public DatabaseHandler(Database database){
         this.database=database;
     }
 
-    public HttpResponse execute(Map<String, List<String>> params){
+    HttpResponse execute(Map<String, List<String>> params){
         database.connect();
         if(params.containsKey("insert")){
             database.insertVisitor(params.get("name").get(0),params.get("comment").get(0));

@@ -1,6 +1,7 @@
 package argowebapp.VisitorDBPlugin.DataBaseHandlers;
 
 //import java.awt.*;
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,9 @@ public class SQLiteHandler implements Database {
     @Override
     public void connect() {
         try {
+            //create directory if not exists
+            new File("files/databases/SQLite").mkdirs();
+
             // db parameters
             String url = "jdbc:sqlite:files/databases/SQLite/visitorsDB.db";
             // create a connection to the database
