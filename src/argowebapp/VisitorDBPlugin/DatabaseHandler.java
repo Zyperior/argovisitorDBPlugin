@@ -31,6 +31,6 @@ public class DatabaseHandler {
         }
 
         database.disconnect();
-        return new HttpResponse("HTTP/1.1 301 See Other","Location: ../Visitors.html");
+        return new HttpResponse("HTTP/1.1 301 See Other","Location: ../visitors.html");
     }
 }
