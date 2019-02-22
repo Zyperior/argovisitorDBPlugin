@@ -1,15 +1,9 @@
 package argowebapp.VisitorDBPlugin.DataBaseHandlers;
 
-//import java.awt.*;
 import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.sqlite.*;
 
 public class SQLiteHandler implements Database {
 
@@ -20,7 +14,10 @@ public class SQLiteHandler implements Database {
     public void connect() {
         try {
             //create directory if not exists
-            new File("files/databases/SQLite").mkdirs();
+            File directory = new File("files/databases/SQLite");
+            if(!directory.exists()){
+                directory.mkdirs();
+            }
 
             // db parameters
             String url = "jdbc:sqlite:files/databases/SQLite/visitorsDB.db";
@@ -123,7 +120,6 @@ public class SQLiteHandler implements Database {
 
     private SQLiteJsonResponseBody convertSQLiteToJSON(String searchParam) throws SQLException {
 
-        ArrayList<HashMap<String, String>> offlineList;
         String selectQuery = "SELECT " + searchParam + " FROM visitors";
 
         Statement database = null;
